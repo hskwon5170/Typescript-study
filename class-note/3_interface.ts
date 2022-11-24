@@ -29,3 +29,24 @@ sum = function(a:number, b:number):number {
     return a+b
 }
 
+// 인덱싱
+interface StringArray{
+    [index:number]: string
+}
+
+let arr:StringArray = ['a', 'b', 'c']
+// arr[0] = 10;
+
+
+
+// 딕셔너리 패턴
+interface StringRegexDictionary {
+    [key:string]: RegExp
+}
+
+let obj: StringRegexDictionary = {
+  // sth: /abc/,
+    cssFile: /\.css$/,
+    jsFile: /\.js$/    
+};
+
