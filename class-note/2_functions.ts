@@ -13,3 +13,4 @@ function sums(): number {
 function sum(a: number, b: number): number {
   return a + b;
 }
+sum(10, 20, 30, 40); // 자바스크립트는 인수를 추가적으로 넣어도 유연하지만, 타입스크립트는 스펙을 정확히 이해하고 제한함
