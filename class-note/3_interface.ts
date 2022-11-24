@@ -50,3 +50,19 @@ let obj: StringRegexDictionary = {
     jsFile: /\.js$/    
 };
 
+
+// 인터페이스 확장
+interface Person{
+    name: string;
+    age: number;
+}
+
+interface Developer extends Person{
+    language: string;
+}
+
+var captain: Developer = {
+    language: 'react',
+    name: 'kwon',
+    age:100
+}
