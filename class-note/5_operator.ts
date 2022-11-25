@@ -20,3 +20,33 @@ function logMessage(value: string | number) {
 }
 logMessage('hello')
 logMessage(100)
+
+interface Developer {
+    name: string;
+    skill: string;
+}
+interface Person {
+    name: string;
+    age: number;
+}
+
+//     //interface 구조체인 Developer와 Person으로 유니언타입을(|) 써주면 이 둘의 공통된 속성에 대해서만 제공해준다
+// function askSomeone(someone:Developer | Person) {
+//     someone.name
+//     someone.skill
+//     someone.age
+// }
+// askSomeone({ name: '디벨로퍼', skill: '웹개발' })
+// askSomeone({name:'캡틴', age:100})
+
+
+// intersection 타입 (&), Developer와 person의 모든 속성을 제공
+function askSomeone(someone: Developer & Person) {
+someone.name;
+someone.skill;
+someone.age;
+}
+askSomeone({ name: '디벨로퍼', skill: '웹개발', age:100 })
+
+// var seho: string | number | boolean;
+// var capt: string & number & boolean;
