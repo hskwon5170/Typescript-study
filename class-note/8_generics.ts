@@ -48,3 +48,30 @@ function logText3<T>(text:T):T {
 }
 const str = logText3<string>("안녕");
 const istrue = logText3<boolean>(true)
+
+
+// 인터페이스에 제네릭을 선언하는 방법
+// interface Dropdown {
+//   value: string;
+//   selected: boolean;
+// }
+// const obj: Dropdown = {
+//   value:"10", selected:false
+// };
+
+interface Dropdown <T>{
+  value: T;
+  selected: boolean;
+}
+const obj: Dropdown<string> = { value: 'abc', selected: false }
+
+
+// 제네릭의 타입 제한 (타입 힌트를 추가적으로 제공)
+function logTextLength<T>(text: T[]): T[] {
+  console.log(text.length)
+  text.forEach((text) => {
+    console.log(text)
+  })
+  return text
+}
+logTextLength(['hi','abc'])
