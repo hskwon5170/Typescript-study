@@ -1,17 +1,34 @@
-const emails = [
-  { value: 'naver.com', selected: true },
-  { value: 'gmail.com', selected: false },
-  { value: 'hanmail.net', selected: false },
+interface DropdownItem<T> {
+  value: T;
+  selected: boolean;
+}
+
+// interface Email {
+//   value: string;
+//   selected: boolean;
+// }
+
+// interface ProductNumber {
+//   value: number;
+//   selected: boolean;
+// }
+
+
+// 하나의 interface로 여러가지 타입을 커버하고있음 (제네릭의 장점!)
+const emails: DropdownItem<string>[] = [
+  { value: "naver.com", selected: true },
+  { value: "gmail.com", selected: false },
+  { value: "hanmail.net", selected: false },
 ];
 
-const numberOfProducts = [
+const numberOfProducts: DropdownItem<number>[] = [
   { value: 1, selected: true },
   { value: 2, selected: false },
   { value: 3, selected: false },
 ];
 
-function createDropdownItem(item) {
-  const option = document.createElement('option');
+function createDropdownItem(item: DropdownItem<string> | DropdownItem<number>) {
+  const option = document.createElement("option");
   option.value = item.value.toString();
   option.innerText = item.value.toString();
   option.selected = item.selected;
