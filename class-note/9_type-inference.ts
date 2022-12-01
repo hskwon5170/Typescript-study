@@ -30,8 +30,8 @@ interface DetailedDropdown<K> extends Dropdown<K>{
 var detailedItem: DetailedDropdown<number> = {
     title: 'abc',
     description: 'ab',
-    value: 'ab',
-    tag: 'a'
+    value: 10,
+    tag: 1,
 }
 
 //  Best Common Type
