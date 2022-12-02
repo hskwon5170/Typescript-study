@@ -1,23 +1,6 @@
-interface PhoneNumberDictionary {
-  [phone: string]: {
-    num: number;
-  };
-}
-
-interface Contact {
-  name: string;
-  address: string;
-  phones: PhoneNumberDictionary;
-}
-
-// 제한된 문자열의 집합 (enum)
-enum PhoneType {
-  Home = 'home',
-  Office = 'office',
-  Studio = 'studio',
-}
-
 // api
+import { Contact, PhoneType } from './types';
+
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
 function fetchContacts(): Promise<Contact[]> {
   // TODO: 아래 변수의 타입을 지정해보세요.
