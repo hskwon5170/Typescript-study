@@ -72,7 +72,7 @@ type UserProfileUpdate = {
   [p in keyof UserProfile]?: UserProfile[p];
 };
 
-// #4
+// #4.
 type Subset<T> = {
   [p in keyof T]?: T[p];
 }; 
