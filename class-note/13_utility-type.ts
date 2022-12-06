@@ -53,8 +53,27 @@ interface UserProfile {
 //   profilePhotoUrl?: string;
 // }
 
+// #1
+// type UserProfileUpdate = {
+//     username?: UserProfile['username'];
+//     email?: UserProfile['email'];
+//     profilePhotoUrl?: UserProfile['profilePhotoUrl'];
+// };
+
+// #2 맵드타입
+// type UserProfileUpdate = {
+//     [p in 'username' | 'email' | 'profilePhotoUrl']?: UserProfile[p]
+// }
+
+// type UserProfileKeys = keyof UserProfile
+
+// #3
 type UserProfileUpdate = {
-    username: UserProfile['username'];
-    email: UserProfile['email'];
-    profilePhotoUrl: UserProfile['profilePhotoUrl'];
+  [p in keyof UserProfile]?: UserProfile[p];
 };
+
+// #4
+type Subset<T> = {
+  [p in keyof T]?: T[p];
+}; 
+
