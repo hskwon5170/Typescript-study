@@ -53,26 +53,31 @@ interface UserProfile {
 //   profilePhotoUrl?: string;
 // }
 
-// #1
+// #1 위쪽의 UserProfileUpdate 인터페이스와 동일한 타입
 // type UserProfileUpdate = {
 //     username?: UserProfile['username'];
 //     email?: UserProfile['email'];
 //     profilePhotoUrl?: UserProfile['profilePhotoUrl'];
 // };
 
-// #2 맵드타입
+// #2 맵드타입 (축약)
+
+// 맵드 타입이란 기존에 정의되어 있는 타입을 새로운 타입으로 변환해주는 문법
+// 마치 자바스크립트의 map() API 함수를 타입에 적용한 것과 같은 효과를 가진다
+
 // type UserProfileUpdate = {
 //     [p in 'username' | 'email' | 'profilePhotoUrl']?: UserProfile[p]
 // }
 
 // type UserProfileKeys = keyof UserProfile
 
-// #3
+// #3 (2번을 더 축약)
+// username, email, profilePhotoUrl은 결곡 UserProfile의 keyof로 대체될수있다
 type UserProfileUpdate = {
   [p in keyof UserProfile]?: UserProfile[p];
 };
 
-// #4.
+// #4. 파셜의 구현 모습
 type Subset<T> = {
   [p in keyof T]?: T[p];
 }; 
