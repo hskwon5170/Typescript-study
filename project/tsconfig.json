@@ -3,7 +3,9 @@
         "allowJs": true,
         "target": "ES5",
         "outDir": "./built",
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "lib":["ES2015", "DOM", "DOM.Iterable"],
+        "noImplicitAny": true, // 명시되지 않은 타입을 컴파일러가 any로 추론해낼 때, 에러를 띄워준다
     },
     "include": ["./src/**/*"] // src 폴더의 모든 파일에 적용하겠다
 }
