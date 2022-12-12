@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "target": "ES5",
+        "outDir": "./built",
+        "moduleResolution": "Node"
+    },
+    "include": ["./src/**/*"] // src 폴더의 모든 파일에 적용하겠다
+}
