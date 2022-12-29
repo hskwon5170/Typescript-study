@@ -1,3 +1,7 @@
+import axios, { AxiosResponse } from 'axios';
+import * as Chart from 'chart.js';
+import { CovidSummaryResponse } from './covid/types';
+
 // utilsss
 function $(selector: string) {
   return document.querySelector(selector);
@@ -9,7 +13,7 @@ function getUnixTimestamp(date: Date) {
 // DOM
 // $ = document.querySelector
 
-let a: Element | HTMLElement | HTMLParagraphElement;
+// let a: Element | HTMLElement | HTMLParagraphElement;
 const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
@@ -40,10 +44,11 @@ let isDeathLoading = false;
 const isRecoveredLoading = false;
 
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
+fetchCovidSummary().then(res => res.data);
 
 enum CovidStatus {
   Confirmed = 'confirmed',
@@ -204,7 +209,9 @@ function setChartData(data: any) {
   const chartData = data.slice(-14).map((value: any) => value.Cases);
   const chartLabel = data
     .slice(-14)
-    .map(value => new Date(value.Date).toLocaleDateString().slice(5, -1));
+    .map((value: { Date: string | number | Date }) =>
+      new Date(value.Date).toLocaleDateString().slice(5, -1)
+    );
   renderChart(chartData, chartLabel);
 }
 
