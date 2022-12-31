@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import * as Chart from 'chart.js';
-import { CovidSummaryResponse } from './covid/types';
+import { CountrySummaryResponse, CovidSummaryResponse } from './covid/types';
 
 // utilsss
 function $(selector: string) {
@@ -56,7 +56,10 @@ enum CovidStatus {
   Deaths = 'deaths',
 }
 
-function fetchCountryInfo(countryCode: string, status: CovidStatus) {
+function fetchCountryInfo(
+  countryCode: string,
+  status: CovidStatus
+): Promise<AxiosResponse<CountrySummaryResponse>> {
   // status params: confirmed, recovered, deaths (status는 정해진 값 3개중 하나만 받으면 되므로 enum)
   // example countryCode: "Switzerland"
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
